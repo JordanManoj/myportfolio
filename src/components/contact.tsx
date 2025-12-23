@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { toast } from 'sonner';
 
-import { sendEmailAction } from '@/actions/send-email';
 import { Button } from '@/components/button';
 import { Icons } from '@/components/icons';
 import { SectionHeading } from '@/components/section-heading';
@@ -26,15 +25,8 @@ export const Contact = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (values: TFormSchema) => {
-    const { data, error } = await sendEmailAction(values);
-
-    if (error) {
-      toast.error(error);
-      return;
-    }
-
-    toast.success(data);
+  const onSubmit = async () => {
+    toast.success('Thanks! Please contact me via email.');
     reset();
   };
 
@@ -61,8 +53,8 @@ export const Contact = () => {
               <Link href="mailto:jordi.manoj@gmail.com">
                 jordi.manoj@gmail.com
               </Link>
-            </Button>{' '}
-            or through this form.
+            </Button>
+            .
           </>
         }
       />
