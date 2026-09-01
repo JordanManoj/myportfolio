@@ -4,47 +4,31 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 98%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 240 10% 3.5%;
+    --foreground: 0 0% 93%;
+    --card: 240 9% 6.5%;
+    --card-foreground: 0 0% 93%;
+    --popover: 240 9% 6.5%;
+    --popover-foreground: 0 0% 93%;
+    --primary: 0 0% 93%;
+    --primary-foreground: 240 10% 3.5%;
+    --secondary: 240 9% 6.5%;
+    --secondary-foreground: 0 0% 93%;
+    --muted: 240 9% 6.5%;
+    --muted-foreground: 250 4% 56%;
+    --accent: 240 9% 6.5%;
+    --accent-foreground: 0 0% 93%;
+    --destructive: 0 62.8% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-  }
+    --border: 240 5% 14%;
+    --input: 240 5% 14%;
+    --ring: 258 84% 74%;
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 4% 8%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --flame-1: #8b7cf6;
+    --flame-2: #34d8e8;
+    --flame-glow: rgba(139, 124, 246, 0.35);
+    --ink-faint: #565660;
+    --ok: #3ddc84;
   }
 }
 
@@ -59,5 +43,127 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
+
+  ::selection {
+    background: var(--flame-1);
+    color: #0a0a0a;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(100deg, var(--flame-1), var(--flame-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 420px;
+  margin-left: -210px;
+  margin-top: -210px;
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(139, 124, 246, 0.32),
+    rgba(52, 216, 232, 0.12) 45%,
+    transparent 72%
+  );
+  filter: blur(14px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  will-change: transform;
+}
+.cursor-glow.is-active {
+  opacity: 1;
+}
+
+.hero-letter {
+  display: inline-block;
+  transform: translateY(0) scale(1);
+  transform-origin: center bottom;
+  transition: transform 0.45s cubic-bezier(0.16, 0.84, 0.32, 1);
+  will-change: transform;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-scroll 26s linear infinite;
+}
+
+@keyframes scroll-flow {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(340%);
+  }
+}
+.scroll-flow {
+  animation: scroll-flow 1.7s ease-in-out infinite;
+}
+
+.cover-1 {
+  background: radial-gradient(circle at 30% 30%, #241c42, #08080a 70%);
+}
+.cover-2 {
+  background: radial-gradient(circle at 70% 30%, #123640, #08080a 70%);
+}
+.cover-3 {
+  background: radial-gradient(circle at 30% 70%, #241c42, #08080a 70%);
+}
+.cover-4 {
+  background: radial-gradient(circle at 70% 70%, #123640, #08080a 70%);
+}
+
+.work-dot-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+}
+
+.work-id {
+  -webkit-text-stroke: 1.3px rgba(255, 255, 255, 0.24);
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2s infinite;
 }

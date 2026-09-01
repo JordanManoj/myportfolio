@@ -1,26 +1,37 @@
-import { About } from '@/components/about';
 import { Contact } from '@/components/contact';
+import { CursorGlow } from '@/components/cursor-glow';
 import { Experience } from '@/components/experience';
 import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
 import { Intro } from '@/components/intro';
+import { Loader } from '@/components/loader';
+import { Marquee } from '@/components/marquee';
+import { Philosophy } from '@/components/philosophy';
 import { Projects } from '@/components/projects';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { SiteNav } from '@/components/site-nav';
+import { Stats } from '@/components/stats';
 
 const HomePage = async () => {
   return (
     <>
+      <Loader />
+      <div className="grain-overlay" aria-hidden="true" />
+      <CursorGlow />
+      <SiteNav />
+
       <div className="container flex flex-col items-center">
-        <Header />
         <Intro />
-        <About />
+      </div>
+
+      <Marquee />
+
+      <div className="container flex flex-col items-center">
+        <Philosophy />
+        <Stats />
         <Experience />
         <Projects />
         <Contact />
         <Footer />
       </div>
-
-      <ThemeToggle className="bg-background hidden sm:fixed sm:bottom-8 sm:right-8 sm:flex" />
     </>
   );
 };
