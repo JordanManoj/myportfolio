@@ -14,6 +14,7 @@ const config = {
       sans: ['var(--font-sans)'],
       mono: ['var(--font-mono)'],
       heading: ['var(--font-heading)'],
+      display: ['var(--font-display)'],
     },
     container: {
       center: true,
@@ -57,9 +58,16 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        flame1: 'var(--flame-1)',
+        flame2: 'var(--flame-2)',
+        ok: 'var(--ok)',
+        'ink-faint': 'var(--ink-faint)',
       },
       borderRadius: {
         md: '0.3rem',
+      },
+      backgroundImage: {
+        flame: 'linear-gradient(100deg, var(--flame-1), var(--flame-2))',
       },
     },
   },

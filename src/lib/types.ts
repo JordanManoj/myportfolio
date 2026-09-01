@@ -1,3 +1,6 @@
-import { links } from '@/lib/data';
-
-export type SectionName = (typeof links)[number]['name'];
+export type SectionName =
+  | 'Home'
+  | 'Philosophy'
+  | 'Experience'
+  | 'Work'
+  | 'Contact';
