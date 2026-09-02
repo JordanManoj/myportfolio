@@ -86,7 +86,7 @@ export const Intro = () => {
           Resume <Icons.download className="size-4" />
         </a>
         <a
-          href="https://github.com/JordanManoj"
+          href="https://github.com/JordanManoj/Jordan-Manoj"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"

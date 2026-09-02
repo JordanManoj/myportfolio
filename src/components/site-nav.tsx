@@ -110,7 +110,7 @@ export const SiteNav = () => {
               LinkedIn
             </a>
             <a
-              href="https://github.com/JordanManoj"
+              href="https://github.com/JordanManoj/Jordan-Manoj"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-flame2"

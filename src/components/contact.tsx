@@ -125,7 +125,7 @@ export const Contact = () => {
                 in
               </a>
               <a
-                href="https://github.com/JordanManoj"
+                href="https://github.com/JordanManoj/Jordan-Manoj"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
