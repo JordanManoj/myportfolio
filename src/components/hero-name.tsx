@@ -68,7 +68,7 @@ export const HeroName = ({ text, gradientStartWord = 1 }: Props) => {
   return (
     <h1
       ref={containerRef}
-      className="font-display relative whitespace-nowrap text-[clamp(34px,8.2vw,112px)] font-bold uppercase leading-[0.98] tracking-[-0.01em]"
+      className="font-display relative whitespace-normal text-[clamp(30px,13vw,112px)] font-bold uppercase leading-[0.98] tracking-[-0.01em] sm:whitespace-nowrap sm:text-[clamp(34px,8.2vw,112px)]"
     >
       {words.map((word, wi) => (
         <span key={wi} className="inline-block">

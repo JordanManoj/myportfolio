@@ -33,10 +33,10 @@ export const Project = ({ project, index }: TProps) => {
       whileInView="animate"
       viewport={{ once: true }}
       custom={index}
-      className="border-border hover:border-muted-foreground/60 group relative block aspect-[4/3] overflow-hidden rounded-[20px] border transition-transform duration-300 hover:-translate-y-1"
+      className="border-border hover:border-muted-foreground/60 group relative block overflow-hidden rounded-[20px] border transition-transform duration-300 hover:-translate-y-1 md:aspect-[4/3]"
     >
       <div
-        className={`work-dot-grid cover-${cover} absolute inset-0 flex items-center justify-center p-8 text-center transition-transform duration-500 group-hover:scale-[1.06]`}
+        className={`work-dot-grid cover-${cover} relative flex h-48 items-center justify-center p-8 text-center transition-transform duration-500 group-hover:scale-[1.06] md:absolute md:inset-0 md:h-auto`}
       >
         <span className="work-id font-heading relative z-[1] select-none text-[clamp(22px,2.6vw,34px)] font-black uppercase leading-[1.15] text-transparent">
           {title}
@@ -47,21 +47,17 @@ export const Project = ({ project, index }: TProps) => {
         ↗
       </div>
 
-      <div
-        className="absolute inset-x-0 bottom-0 z-[2] px-[26px] pb-[26px] pt-[70px]"
-        style={{
-          background:
-            'linear-gradient(to top, rgba(3,3,4,0.92), rgba(3,3,4,0.55) 55%, transparent 100%)',
-        }}
-      >
+      <div className="work-overlay-bg bg-card relative z-[2] px-[22px] py-5 md:absolute md:inset-x-0 md:bottom-0 md:bg-transparent md:px-[26px] md:pb-[26px] md:pt-[70px]">
         <div className="text-flame1 mb-2 text-xs font-semibold uppercase tracking-wide">
           {kicker}
         </div>
-        <h3 className="font-heading text-[21px] font-bold">{title}</h3>
-        <p className="text-muted-foreground mt-2 max-h-0 overflow-hidden text-[13.5px] opacity-0 transition-all duration-300 group-hover:max-h-[120px] group-hover:opacity-100">
+        <h3 className="font-heading text-[19px] font-bold md:text-[21px]">
+          {title}
+        </h3>
+        <p className="text-muted-foreground mt-2 max-h-[120px] overflow-hidden text-[13.5px] opacity-100 transition-all duration-300 md:max-h-0 md:opacity-0 md:group-hover:max-h-[120px] md:group-hover:opacity-100">
           {description}
         </p>
-        <div className="mt-[14px] flex translate-y-2 flex-wrap gap-[7px] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="mt-[14px] flex translate-y-0 flex-wrap gap-[7px] opacity-100 transition-all duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
           {technologies.map((tech) => (
             <span
               key={tech}

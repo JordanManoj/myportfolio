@@ -109,7 +109,7 @@ export const Intro = () => {
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, delay: 0.8 }}
-        className="border-border text-ink-faint mt-20 flex items-center justify-between gap-3 border-t pt-[22px] text-[13px]"
+        className="border-border text-ink-faint mt-16 flex flex-col items-start gap-2 border-t pt-[22px] text-[13px] sm:mt-20 sm:flex-row sm:items-center sm:justify-between sm:gap-3"
       >
         <div className="text-muted-foreground">Hannover, Germany</div>
         <div>MSc Informatik — Leibniz Universität Hannover</div>
